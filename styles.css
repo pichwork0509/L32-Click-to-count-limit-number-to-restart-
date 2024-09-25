@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-width: 80px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+}
+
+
+/* Styling the link */
+.styled-link {
+    font-size: 10px;              /* Increase font size */
+    color: #007BFF;               /* Blue color */
+    text-decoration: none;        /* Remove underline */
+    padding: 8px 12px;           /* Add some padding */
+    border: 2px solid #007BFF;    /* Border around the link */
+    border-radius: 5px;           /* Rounded corners */
+    background-color: white;      /* Background color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect */
+.styled-link:hover {
+    background-color: #007BFF;    /* Blue background on hover */
+    color: white;                 /* White text on hover */
+}
+
+/* Center the text within the paragraph */
+p {
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+
+

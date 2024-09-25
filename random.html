@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="L322.png" type="image/png">
+    <title> L32 Tool </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-width: 80px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border: 2px solid #007bff;
+            border-radius: 50%;
+            font-size: 24px;
+            color: #007bff;
+            background-color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cell:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 0 20px 0 0;
+            flex-grow: 1;
+        }
+
+        .limit-input {
+            width: 50px;
+            padding: 5px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .limit-input:focus {
+            border-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="L32.png" alt="L32 Tool">
+        <h1>L32 TOOL</h1>
+    </header>
+
+    <div class="container">
+        <!-- Row 1 -->
+        <div class="row">
+            <h1>Phone 01</h1>
+            <div class="cell" onclick="cycleNumber(this, 0)">1</div>
+            <input type="number" id="limit-0" class="limit-input" value="8" min="2" onchange="saveLimit(0)">
+        </div>
+        
+        <!-- Row 2 -->
+        <div class="row">
+            <h1>Phone 02</h1>
+            <div class="cell" onclick="cycleNumber(this, 1)">1</div>
+            <input type="number" id="limit-1" class="limit-input" value="5" min="2" onchange="saveLimit(1)">
+        </div>
+        
+        <!-- Row 3 -->
+        <div class="row">
+            <h1>Phone 03</h1>
+            <div class="cell" onclick="cycleNumber(this, 2)">1</div>
+            <input type="number" id="limit-2" class="limit-input" value="10" min="2" onchange="saveLimit(2)">
+        </div>
+        
+        <!-- Row 4 -->
+        <div class="row">
+            <h1>Phone 04</h1>
+            <div class="cell" onclick="cycleNumber(this, 3)">1</div>
+            <input type="number" id="limit-3" class="limit-input" value="7" min="2" onchange="saveLimit(3)">
+        </div>
+    </div>
+
+    <script>
+        // Initialize the numbers and limits on page load from localStorage
+        window.onload = function() {
+            for (let i = 0; i < 4; i++) {
+                const savedNumber = localStorage.getItem('number_' + i);
+                const savedLimit = localStorage.getItem('limit_' + i);
+                
+                if (savedNumber) {
+                    document.getElementsByClassName('cell')[i].innerText = savedNumber;
+                }
+                
+                if (savedLimit) {
+                    document.getElementById('limit-' + i).value = savedLimit;
+                }
+            }
+        }
+
+        function cycleNumber(cell, index) {
+            let currentNumber = parseInt(cell.innerText);
+            let limit = parseInt(document.getElementById('limit-' + index).value); // Get the specific limit for the current row
+            let nextNumber = (currentNumber % limit) + 1;
+            cell.innerText = nextNumber;
+
+            // Save the current number to localStorage
+            localStorage.setItem('number_' + index, nextNumber);
+        }
+
+        // Save the limit to localStorage when the input changes
+        function saveLimit(index) {
+            const limitValue = document.getElementById('limit-' + index).value;
+            localStorage.setItem('limit_' + index, limitValue);
+        }
+    </script>
+
+</body>
+</html>
